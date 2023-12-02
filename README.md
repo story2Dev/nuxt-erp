@@ -1,6 +1,24 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Admin Dashboard
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a simple admin dashboard built with Nuxt 3 and Tailwind CSS.
+
+## Demo
+
+
+## USE 
+
+[UI](https://www.naiveui.com/en-US/os-theme)
+
+[nuxt-naiveui](https://github.com/becem-gharbi/nuxt-naiveui)
+
+## Features
+
+- [x] Nuxt 3
+- [x] Tailwind CSS
+- [x] EChart
+- [x] TypeScript
+- [x] ESLint
+- [x] Prettier
 
 ## Setup
 
@@ -72,4 +90,3 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
