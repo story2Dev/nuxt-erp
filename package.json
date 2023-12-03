@@ -11,7 +11,9 @@
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
+    "backend:dev": "docker-compose -f doc-backend/docker-compose.yaml up -d",
+    "backend:stop": "docker-compose -f doc-backend/docker-compose.yaml down"
   },
   "devDependencies": {
     "@bg-dev/nuxt-naiveui": "^1.5.5",
