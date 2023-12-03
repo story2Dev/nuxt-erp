@@ -1,10 +1,9 @@
-# Nuxt 3 Admin Dashboard
+# Nuxt ERP Admin Dashboard
 
-This is a simple admin dashboard built with Nuxt 3 and Tailwind CSS.
+ERP Admin Dashboard built with Nuxt 3, Tailwind CSS, TypeScript, ESLint, Prettier, EChart
 
 ## Demo
 
-[Demo Link](https://nuxt3-admin.netlify.app/)
 
 ![image](https://github.com/story2Dev/nuxt3-admin-dashboard/assets/18229355/cc6d602f-fdcc-4688-847b-4f15d1356e60)
 
