@@ -2,6 +2,8 @@
 
 ERP Admin Dashboard built with Nuxt 3, Tailwind CSS, TypeScript, ESLint, Prettier, EChart
 
+[feature](KEY-FEATURE.md)
+
 ## Demo
 
 
@@ -90,5 +92,17 @@ yarn preview
 
 # bun
 bun run preview
+```
+
+## backend dev
+
+or read [here](doc-backend/README.md)
+
+```bash
+
+# npm
+npm run backend:dev
+
+
 ```
 
