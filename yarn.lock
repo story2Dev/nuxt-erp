@@ -329,7 +329,7 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@bg-dev/nuxt-naiveui@^1.5.5":
+"@bg-dev/nuxt-naiveui@^1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@bg-dev/nuxt-naiveui/-/nuxt-naiveui-1.6.1.tgz#2a7dc05894e6005d49d059c2f7327969de70c164"
   integrity sha512-L1n1QMmUIIfJ/Hg8yIDqDndmheu674+cgy3RJhRfrLRrdHT34ZMZg/Q8Q4O/XMq2GBBPMaywubc/neIOmbWvrQ==
@@ -1148,7 +1148,7 @@
     eslint-plugin-vue "^9.7.0"
     local-pkg "^0.4.2"
 
-"@nuxtjs/i18n@^8.0.0-rc.1":
+"@nuxtjs/i18n@^8.0.0-rc.6":
   version "8.0.0-rc.6"
   resolved "https://registry.yarnpkg.com/@nuxtjs/i18n/-/i18n-8.0.0-rc.6.tgz#081bd216d8a00b00ff0367975330dbebc0b13ceb"
   integrity sha512-Pn5RNasGqpxnIqDNe8IUKAIqCphIq4IaKyJKLwOl8wZX9T4bPBa8Jm95Gxjd53gciUkv6m259mhMRE7bVh+aTA==
