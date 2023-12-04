@@ -23,7 +23,8 @@
 const { locale, locales, setLocale } = useI18n();
 const { title } = useApp();
 title.value = 'Your Account';
-const languages = locales.value.map((item) => ({
+
+const languages = locales.value.map((item: any) => ({
   label: item.name,
   value: item.code,
 }));
