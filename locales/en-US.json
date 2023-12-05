@@ -2,5 +2,18 @@
     "hello": "world",
     "language": "Language",
     "no_result": "No result",
-    "search": "Search"
+    "search": "Search",
+    "signin_your_account": "Sign in your account",
+    "email": "Email",
+    "password": "Password",
+    "signin": "Sign in",
+    "forgot_password": "Forgot password",
+    "auth":{
+        "invalid_credentials": "Invalid credentials",
+        "signin_failed": "Sign in failed",
+        "signin_success": "Sign in success",
+        "signout_success": "Sign out success",
+        "signout_failed": "Sign out failed",
+        "welcome_back": "Welcome back"
+    }
 }
