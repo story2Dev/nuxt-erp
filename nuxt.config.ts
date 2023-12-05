@@ -21,4 +21,9 @@ export default defineNuxtConfig({
     langDir: 'locales/',
     defaultLocale: 'en',
   },
+  runtimeConfig: {
+    public: {
+      authApi: process.env.NUXT_AUTH_API,
+    },
+  },
 });
