@@ -18,6 +18,7 @@
   "devDependencies": {
     "@bg-dev/nuxt-naiveui": "^1.6.1",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/apollo": "^5.0.0-alpha.10",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/i18n": "^8.0.0-rc.6",
     "@nuxtjs/tailwindcss": "^6.10.1",
