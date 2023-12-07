@@ -3,20 +3,7 @@
     <section>Dashboard</section>
     <section class="mt-4 grid gap-4 md:grid-cols-2">
       <div>
-        <ul class="flex flex-wrap gap-4">
-          <li
-            v-for="(item, index) in quizAccessApp"
-            :key="index"
-            class="group flex cursor-pointer flex-col items-center rounded-xl bg-white p-4 px-6 hover:bg-primary-50"
-          >
-            <Icon
-              :name="item.icon"
-              class="transition-all group-hover:rotate-12 group-hover:scale-125 group-hover:text-primary-600"
-              size="30"
-            />
-            <h3>{{ item.title }}</h3>
-          </li>
-        </ul>
+        <CommonQuizAccessApp />
         <article class="mt-4">
           <QuoteRecent />
         </article>
@@ -67,29 +54,6 @@ import theme from '#tailwind-config/theme';
 import { type ECOption, useEcharts } from '~/hooks/echart';
 
 const themeColor = theme.colors.primary[500];
-
-const quizAccessApp = [
-  {
-    to: '',
-    icon: 'system-uicons:document',
-    title: 'File',
-  },
-  {
-    to: '',
-    icon: 'system-uicons:paper-plane',
-    title: 'Message',
-  },
-  {
-    to: '',
-    icon: 'system-uicons:users',
-    title: 'Team',
-  },
-  {
-    to: '',
-    icon: 'heroicons:cog',
-    title: 'Setting',
-  },
-];
 
 const chart1 = ref<ECOption>() as Ref<ECOption>;
 const { domRef: lineChart } = useEcharts(chart1);
