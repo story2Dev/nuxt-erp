@@ -11,7 +11,7 @@ create table if not exists terms (
     updated_at timestamp not null default now_utc()
  );
 
-create table if not exists term_items (
+create table if not exists term_meta (
     id uuid primary key default gen_random_uuid(),
     term_id uuid not null references terms(id),
     key character varying not null,
