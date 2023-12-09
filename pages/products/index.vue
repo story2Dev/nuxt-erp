@@ -11,7 +11,7 @@
             </n-input>
           </article>
           <article class="flex justify-end gap-2">
-            <n-button>
+            <n-button @click="testError">
               <template #icon>
                 <Icon name="system-uicons:filter" />
               </template>
@@ -34,4 +34,8 @@
 
 <script setup lang="ts">
 const search = ref('');
+
+function testError() {
+  throw new Error('test error');
+}
 </script>
