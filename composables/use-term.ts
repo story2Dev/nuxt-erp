@@ -1,13 +1,18 @@
 import { TERMS_QUERY } from '~/gql/query';
 import { DELETE_TERM, INSERT_TERM, UPDATE_TERM } from '~/gql/mutate';
-import type { Term, TermInput } from '~/types';
+import type { Term, TermInput, Variable } from '~/types';
 
 export const useTerm = () => {
   const { client } = useApolloClient();
 
-  async function getTerms() {
+  const terms = useState<Term[]>('terms', () => []);
+
+  async function getTerms(variables?: Partial<Variable>) {
     try {
-      const { data, errors } = await client.query({ query: TERMS_QUERY });
+      const { data, errors } = await client.query({
+        query: TERMS_QUERY,
+        variables,
+      });
       if (errors) {
         throw new Error(`[useTerm]: getTerms errors: ${errors}`);
       }
@@ -26,7 +31,7 @@ export const useTerm = () => {
       const { data, errors } = await client.mutate({
         mutation: INSERT_TERM,
         variables: {
-          object,
+          object: toHasuraInput(object),
         },
       });
 
@@ -48,7 +53,7 @@ export const useTerm = () => {
       const { data, errors } = await client.mutate({
         mutation: UPDATE_TERM,
         variables: {
-          _set: object,
+          _set: toHasuraInput(object),
           id,
         },
       });
@@ -93,5 +98,6 @@ export const useTerm = () => {
     insert,
     update,
     remove,
+    terms,
   };
 };

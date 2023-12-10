@@ -18,6 +18,9 @@
   "description": "Description",
   "save": "Save",
   "more": "More",
+  "action": "Action",
+  "edit": "Edit",
+  "name": "Name",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",
