@@ -6,6 +6,11 @@ export const useTerm = () => {
   const { client } = useApolloClient();
 
   const terms = useState<Term[]>('terms', () => []);
+  const frm = useState<Partial<Term>>('frm', () => ({
+    id: '',
+    name: '',
+    status: true,
+  }));
 
   async function getTerms(variables?: Partial<Variable>) {
     try {
@@ -53,7 +58,7 @@ export const useTerm = () => {
       const { data, errors } = await client.mutate({
         mutation: UPDATE_TERM,
         variables: {
-          _set: toHasuraInput(object),
+          object: toHasuraInput(object),
           id,
         },
       });
@@ -99,5 +104,6 @@ export const useTerm = () => {
     update,
     remove,
     terms,
+    frm,
   };
 };

@@ -34,29 +34,56 @@
           <thead class="border-b-2 text-left">
             <tr>
               <th class="py-1">{{ $t('name') }}</th>
-              <th>{{ $t('action') }}</th>
+              <th class="text-right">{{ $t('action') }}</th>
             </tr>
           </thead>
           <tbody class="divide-y">
             <tr v-for="(item, index) in terms" :key="index">
               <td class="py-1">{{ item.name }}</td>
-              <td></td>
+              <td class="text-right">
+                <n-button
+                  circle
+                  quaternary
+                  type="primary"
+                  @click="setEdit(item)"
+                >
+                  <template #icon>
+                    <Icon name="system-uicons:pen" />
+                  </template>
+                </n-button>
+                <n-button circle quaternary type="error">
+                  <template #icon>
+                    <Icon name="system-uicons:trash" />
+                  </template>
+                </n-button>
+              </td>
             </tr>
           </tbody>
         </table>
+        <div class="mt-4 flex justify-end">
+          <n-pagination v-model:page="page" :page-count="100" />
+        </div>
       </n-card>
     </section>
 
     <TermAdd v-model="showModal" :group-id="TermGroupID.category" />
+    <TermEdit v-model="isEdit" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { TermGroupID } from '~/constants';
+import type { Term } from '~/types';
 
-const { terms, getTerms } = useTerm();
+useHead({
+  title: 'Category',
+});
+
+const { terms, getTerms, frm } = useTerm();
 const search = ref('');
 const showModal = ref(false);
+const isEdit = ref(false);
+const page = ref(1);
 
 async function handleSearch() {
   const { items } = await getTerms({
@@ -70,4 +97,11 @@ async function handleSearch() {
 }
 
 handleSearch();
+
+function setEdit(item: Term) {
+  frm.value = {
+    ...item,
+  };
+  isEdit.value = true;
+}
 </script>

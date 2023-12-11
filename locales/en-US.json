@@ -21,6 +21,7 @@
   "action": "Action",
   "edit": "Edit",
   "name": "Name",
+  "update": "Update",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",

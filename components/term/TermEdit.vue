@@ -1,7 +1,7 @@
 <template>
   <n-modal v-model:show="showModal">
     <n-card
-      :title="$t('add')"
+      :title="$t('edit')"
       :bordered="false"
       role="dialog"
       aria-modal="true"
@@ -11,9 +11,9 @@
     >
       <div>
         <n-input
-          v-model:value="name"
+          v-model:value="frm.name"
           :placeholder="$t('name')"
-          @keyup.enter="handleAdd"
+          @keyup.enter="handleUpdate"
         />
       </div>
       <template #footer>
@@ -21,8 +21,8 @@
           <n-button @click="showModal = false">
             {{ $t('cancel') }}
           </n-button>
-          <n-button type="primary" @click="handleAdd">
-            {{ $t('add') }}
+          <n-button type="primary" @click="handleUpdate">
+            {{ $t('update') }}
           </n-button>
         </div>
       </template>
@@ -33,7 +33,6 @@
 <script setup lang="ts">
 interface Props {
   modelValue: boolean;
-  groupId?: number;
   parentId?: string;
 }
 
@@ -44,16 +43,15 @@ const showModal = computed({
   set: (val) => emit('update:modelValue', val),
 });
 
-const name = ref('');
 const { t } = useI18n();
 const notification = useNotification();
-const { insert, terms } = useTerm();
+const { update, terms, frm } = useTerm();
 
-async function handleAdd() {
-  const { groupId, parentId } = props;
-  const { errors, term } = await insert({
-    name: name.value,
-    groupId,
+async function handleUpdate() {
+  const { parentId } = props;
+  const { id, name } = frm.value;
+  const { errors, term } = await update(id as string, {
+    name,
     parentId,
   });
 
@@ -63,7 +61,15 @@ async function handleAdd() {
       duration: 3000,
     });
     showModal.value = false;
-    terms.value = [...terms.value, term];
+    terms.value = terms.value.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          ...term,
+        };
+      }
+      return item;
+    });
   }
 }
 </script>

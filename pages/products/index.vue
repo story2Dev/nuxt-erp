@@ -35,6 +35,10 @@
 <script setup lang="ts">
 const search = ref('');
 
+useHead({
+  title: 'Products',
+});
+
 function testError() {
   throw new Error('test error');
 }
