@@ -1,1 +1,2 @@
-export * from './app-type'
+export * from './App-Type';
+export * from './Term';

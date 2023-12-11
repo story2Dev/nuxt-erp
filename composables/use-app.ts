@@ -1,13 +1,13 @@
-import type { KeyValue } from "~/types"
+import type { KeyValue } from '~/types';
 
 export const useApp = () => {
-    const title = useState('app-title', ()=> 'Dashboard')
+  const title = useState('app-title', () => 'Dashboard');
 
-    // setting app
-    const setting = useState<KeyValue>('app-setting', ()=> ({}))
+  // setting app
+  const setting = useState<KeyValue>('app-setting', () => ({}));
 
-    return {
-        title,
-        setting
-    }
-}
+  return {
+    title,
+    setting,
+  };
+};

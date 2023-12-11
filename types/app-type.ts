@@ -1,3 +1,3 @@
 export interface KeyValue {
-    [key: string]: string | number | boolean;
+  [key: string]: string | number | boolean;
 }

@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { TOKEN_KEY } from './constants/';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
@@ -7,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
     '@nuxtjs/i18n',
+    '@nuxtjs/apollo',
   ],
   tailwindcss: {
     exposeConfig: true,
@@ -24,6 +26,24 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       authApi: process.env.NUXT_AUTH_API,
+    },
+  },
+  apollo: {
+    autoImports: true,
+    authType: 'Bearer',
+    authHeader: 'Authorization',
+    tokenStorage: 'cookie',
+    proxyCookies: true,
+    clients: {
+      default: {
+        httpLinkOptions: {
+          credentials: 'include',
+        },
+        httpEndpoint: `${process.env.NUXT_AUTH_GRAPHQL}`,
+        websocketsOnly: false,
+        tokenName: TOKEN_KEY,
+        authHeader: 'Authorization',
+      },
     },
   },
 });

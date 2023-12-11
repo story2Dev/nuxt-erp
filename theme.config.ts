@@ -21,9 +21,6 @@ const lightThemeOverrides: GlobalThemeOverrides = {
     boxShadowFocus: '0 0 0px 3px ' + theme.colors.primary[100],
     paddingMedium: '2px 12px',
     fontSizeMedium: '12px',
-    lineHeightMedium: '1px',
-    lineHeight: '1px',
-    heightMedium: '30px',
     borderRadius: rounded,
   },
   Card: {
