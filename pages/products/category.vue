@@ -51,7 +51,12 @@
                     <Icon name="system-uicons:pen" />
                   </template>
                 </n-button>
-                <n-button circle quaternary type="error">
+                <n-button
+                  circle
+                  quaternary
+                  type="error"
+                  @click="setDelete(item)"
+                >
                   <template #icon>
                     <Icon name="system-uicons:trash" />
                   </template>
@@ -60,6 +65,18 @@
             </tr>
           </tbody>
         </table>
+
+        <n-empty v-if="!terms.length" class="my-4" :description="$t('no_data')">
+          <template #extra>
+            <n-button size="small" @click="showModal = true">
+              <template #icon>
+                <Icon name="system-uicons:plus" />
+              </template>
+              {{ $t('add') }}
+            </n-button>
+          </template>
+        </n-empty>
+
         <div class="mt-4 flex justify-end">
           <n-pagination v-model:page="page" :page-count="100" />
         </div>
@@ -68,6 +85,11 @@
 
     <TermAdd v-model="showModal" :group-id="TermGroupID.category" />
     <TermEdit v-model="isEdit" />
+    <CommonConfirm
+      v-model="isDelete"
+      :data="`Delete '${frm.name}'`"
+      @ok="handleRemove"
+    />
   </div>
 </template>
 
@@ -79,11 +101,12 @@ useHead({
   title: 'Category',
 });
 
-const { terms, getTerms, frm } = useTerm();
+const { terms, getTerms, frm, remove } = useTerm();
 const search = ref('');
 const showModal = ref(false);
 const isEdit = ref(false);
 const page = ref(1);
+const isDelete = ref(false);
 
 async function handleSearch() {
   const { items } = await getTerms({
@@ -103,5 +126,17 @@ function setEdit(item: Term) {
     ...item,
   };
   isEdit.value = true;
+}
+
+function setDelete(item: Term) {
+  frm.value = {
+    ...item,
+  };
+  isDelete.value = true;
+}
+
+function handleRemove() {
+  remove(frm.value.id as string);
+  isDelete.value = false;
 }
 </script>
