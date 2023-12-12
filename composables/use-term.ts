@@ -88,6 +88,8 @@ export const useTerm = () => {
       if (errors) {
         throw new Error(`[useTerm]: remove errors: ${errors}`);
       }
+      // remove state
+      terms.value = terms.value.filter((item) => item.id !== id);
 
       return {
         term: data?.deleteTerm as Term,

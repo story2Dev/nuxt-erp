@@ -22,6 +22,8 @@
   "edit": "Edit",
   "name": "Name",
   "update": "Update",
+  "delete": "Delete",
+  "no_data": "No data",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",
