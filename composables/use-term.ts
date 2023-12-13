@@ -6,6 +6,7 @@ export const useTerm = () => {
   const { client } = useApolloClient();
 
   const terms = useState<Term[]>('terms', () => []);
+  const count = useState<number>('count', () => 0);
   const frm = useState<Partial<Term>>('frm', () => ({
     id: '',
     name: '',
@@ -21,6 +22,8 @@ export const useTerm = () => {
       if (errors) {
         throw new Error(`[useTerm]: getTerms errors: ${errors}`);
       }
+      const _count = data?.aggregate?.aggregate?.count || 0;
+      count.value = _count;
       const items: Term[] = data?.terms || [];
       return {
         items,
@@ -107,5 +110,6 @@ export const useTerm = () => {
     remove,
     terms,
     frm,
+    count,
   };
 };
