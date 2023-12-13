@@ -4,7 +4,11 @@
       <n-card>
         <div class="flex justify-between">
           <article>
-            <n-input v-model:value="search" :placeholder="$t('search')">
+            <n-input
+              v-model:value="search"
+              :placeholder="$t('search')"
+              @keyup.enter="handleSearch"
+            >
               <template #prefix>
                 <Icon name="system-uicons:search" />
               </template>
@@ -78,7 +82,11 @@
         </n-empty>
 
         <div class="mt-4 flex justify-end">
-          <n-pagination v-model:page="page" :page-count="100" />
+          <n-pagination
+            v-model:page="page"
+            :page-count="pageCount"
+            @update:page="handleSearch"
+          />
         </div>
       </n-card>
     </section>
@@ -101,12 +109,15 @@ useHead({
   title: 'Category',
 });
 
-const { terms, getTerms, frm, remove } = useTerm();
+const { terms, getTerms, frm, remove, count } = useTerm();
 const search = ref('');
 const showModal = ref(false);
 const isEdit = ref(false);
 const page = ref(1);
 const isDelete = ref(false);
+const limit = 10;
+
+const pageCount = computed(() => Math.ceil(count.value / limit));
 
 async function handleSearch() {
   const { items } = await getTerms({
@@ -114,7 +125,12 @@ async function handleSearch() {
       group_id: {
         _eq: TermGroupID.category,
       },
+      name: {
+        _ilike: `%${search.value}%`,
+      },
     },
+    limit,
+    offset: (page.value - 1) * limit,
   });
   terms.value = items;
 }

@@ -37,5 +37,10 @@ export const TERMS_QUERY = gql`
         termId: term_id
       }
     }
+    aggregate: terms_aggregate(where: $where) {
+      aggregate {
+        count
+      }
+    }
   }
 `;
