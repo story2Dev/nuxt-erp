@@ -3,11 +3,14 @@ import { SESSION_KEY, TOKEN_KEY } from '~/constants';
 export const useAuth = () => {
   const config = useRuntimeConfig();
 
-  const cookieSession = useCookie(SESSION_KEY);
+  const cookieSession = useCookie<any>(SESSION_KEY);
   const token = useCookie(TOKEN_KEY);
 
   function setAuthSession(session: any) {
-    cookieSession.value = session;
+    cookieSession.value = {
+      ...session,
+      accessTokenExpiresIn: Date.now() + session.accessTokenExpiresIn * 1000,
+    };
     token.value = session.accessToken;
   }
 
@@ -27,5 +30,41 @@ export const useAuth = () => {
     }
   }
 
-  return { signIn };
+  function refreshToken() {
+    const { accessTokenExpiresIn, refreshToken } = cookieSession.value || {};
+
+    if (!accessTokenExpiresIn) return;
+
+    if (accessTokenExpiresIn > Date.now()) {
+      return;
+    }
+    $fetch(`${config.public.authApi}/token`, {
+      method: 'POST',
+      body: { refreshToken },
+    });
+  }
+
+  async function signOut() {
+    try {
+      const { refreshToken } = cookieSession.value;
+      cookieSession.value = null;
+      token.value = null;
+      await $fetch(`${config.public.authApi}/signout`, {
+        method: 'POST',
+        body: { all: true, refreshToken },
+      });
+
+      navigateTo('/signin');
+    } catch (error) {
+      navigateTo('/signin');
+      throw new Error(`[useAuth] signOut: Error signing out: ${error}`);
+    }
+  }
+
+  return {
+    signIn,
+    refreshToken,
+    signOut,
+    user: cookieSession.value?.user || null,
+  };
 };
