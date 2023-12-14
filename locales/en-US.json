@@ -24,6 +24,7 @@
   "update": "Update",
   "delete": "Delete",
   "no_data": "No data",
+  "sign_out": "Sign out",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",
