@@ -32,7 +32,6 @@ export const useAuth = () => {
 
   function refreshToken() {
     const { accessTokenExpiresIn, refreshToken } = cookieSession.value || {};
-
     if (!accessTokenExpiresIn) return;
 
     if (accessTokenExpiresIn > Date.now()) {
@@ -41,6 +40,8 @@ export const useAuth = () => {
     $fetch(`${config.public.authApi}/token`, {
       method: 'POST',
       body: { refreshToken },
+    }).then((res: any) => {
+      setAuthSession(res);
     });
   }
 

@@ -9,4 +9,5 @@ export enum TermGroupID {
   paymentStatus = 5,
   paymentMethod = 6,
   projectStatus = 7,
+  productType = 8,
 }
