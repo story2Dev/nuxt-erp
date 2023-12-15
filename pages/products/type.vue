@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TermTable :group-id="TermGroupID.tag" />
+    <TermTable :group-id="TermGroupID.productType" />
   </div>
 </template>
 
@@ -8,6 +8,6 @@
 import { TermGroupID } from '~/constants';
 
 useHead({
-  title: 'Tag',
+  title: 'Product Type',
 });
 </script>

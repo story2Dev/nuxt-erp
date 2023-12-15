@@ -6,8 +6,15 @@ export const useApp = () => {
   // setting app
   const setting = useState<KeyValue>('app-setting', () => ({}));
 
+  const page = ref(1);
+  const limit = 2;
+  const search = ref('');
+
   return {
     title,
     setting,
+    page,
+    limit,
+    search,
   };
 };

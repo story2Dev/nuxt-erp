@@ -32,6 +32,10 @@ const links = [
     name: 'category',
   },
   {
+    to: '/products/type',
+    name: 'type',
+  },
+  {
     to: '/products/tag',
     name: 'tag',
   },
