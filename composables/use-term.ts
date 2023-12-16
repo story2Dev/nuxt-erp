@@ -1,7 +1,6 @@
 import { TERMS_QUERY } from '~/gql/query';
 import { DELETE_TERM, INSERT_TERM, UPDATE_TERM } from '~/gql/mutate';
 import type { Term, TermInput, Variable } from '~/types';
-import { TermGroupID } from '~/constants';
 
 export const useTerm = () => {
   const { client } = useApolloClient();

@@ -18,10 +18,16 @@
 
           <div class="grid grid-cols-2 gap-4">
             <n-form-item path="category" :label="$t('category')">
-              <n-select :placeholder="$t('category')" />
+              <TermInput
+                :placeholder="$t('category')"
+                :group-id="TermGroupID.category"
+              />
             </n-form-item>
             <n-form-item path="type" :label="$t('type')">
-              <n-select :placeholder="$t('type')" />
+              <TermInput
+                :group-id="TermGroupID.productType"
+                :placeholder="$t('type')"
+              />
             </n-form-item>
           </div>
 
@@ -43,6 +49,9 @@
               type="textarea"
               rows="2"
             />
+          </n-form-item>
+          <n-form-item path="tag" :label="$t('tag')">
+            <TermInput :group-id="TermGroupID.tag" type="checkbox" />
           </n-form-item>
           <n-button text icon-placement="right">
             <template #icon>
@@ -76,4 +85,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { TermGroupID } from '~/constants';
+</script>

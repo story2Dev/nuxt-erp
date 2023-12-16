@@ -19,7 +19,7 @@ export const TERM_QUERY = gql`
 export const TERMS_QUERY = gql`
   query term(
     $where: terms_bool_exp
-    $orderBy: [terms_order_by!]
+    $orderBy: [terms_order_by!] = { name: asc }
     $limit: Int
     $offset: Int
   ) {
