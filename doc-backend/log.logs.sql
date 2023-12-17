@@ -9,6 +9,6 @@ create table if not exists log.logs (
   object_id uuid null,
   ip inet null,
   user_agent character varying null,
-  created_at timestamp not null default now_utc(),
-  updated_at timestamp not null default now_utc()
+  created_at timestamp without time zone not null default now_utc(),
+  updated_at timestamp without time zone not null default now_utc()
 );
