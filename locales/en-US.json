@@ -25,6 +25,7 @@
   "delete": "Delete",
   "no_data": "No data",
   "sign_out": "Sign out",
+  "type": "Type",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",

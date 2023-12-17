@@ -7,7 +7,7 @@ export const useApp = () => {
   const setting = useState<KeyValue>('app-setting', () => ({}));
 
   const page = ref(1);
-  const limit = 2;
+  const limit = 10;
   const search = ref('');
 
   return {
