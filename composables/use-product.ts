@@ -1,9 +1,30 @@
+import type { FormRules } from 'naive-ui';
 import { DELETE_PRODUCT, INSERT_PRODUCT, UPDATE_PRODUCT } from '~/gql/mutate';
 import { PRODUCTS_QUERY } from '~/gql/query';
 import type { Product, ProductInput, Variable } from '~/types';
 
 export const useProduct = () => {
   const { client } = useApolloClient();
+
+  const rules: FormRules = {
+    name: {
+      required: true,
+      message: 'Please input product name',
+      trigger: 'blur',
+    },
+    price: {
+      required: true,
+      message: 'Please input price',
+      trigger: ['input'],
+      type: 'number',
+    },
+    cost: {
+      required: true,
+      message: 'Please input cost',
+      trigger: ['input'],
+      type: 'number',
+    },
+  };
 
   const frm = useState<Partial<Product>>('frm', () => ({
     name: '',
@@ -112,5 +133,6 @@ export const useProduct = () => {
     insert,
     update,
     remove,
+    rules,
   };
 };
