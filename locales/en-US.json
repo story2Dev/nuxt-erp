@@ -26,6 +26,7 @@
   "no_data": "No data",
   "sign_out": "Sign out",
   "type": "Type",
+  "success": "Success",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",
@@ -39,6 +40,7 @@
     "stock_trackable": "Stock trackable",
     "price": "Price",
     "cost": "Cost",
-    "stock": "Stock"
+    "stock": "Stock",
+    "add_success": "Add product success"
   }
 }

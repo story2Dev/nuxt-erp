@@ -2,13 +2,13 @@
   <div>
     <n-card :title="$t('products.add')">
       <div class="grid gap-4 md:grid-cols-2">
-        <article>
+        <n-form ref="formRef" :model="frm" :rules="rules">
           <n-form-item path="name" :label="$t('name')">
             <n-input v-model:value="frm.name" :placeholder="$t('name')" />
           </n-form-item>
 
           <div class="grid grid-cols-2 gap-4">
-            <n-form-item path="price" :label="$t('products.price')">
+            <n-form-item path="unitPrice" :label="$t('products.price')">
               <n-input-number
                 v-model:value="frm.unitPrice"
                 :parse="inputParse"
@@ -80,7 +80,7 @@
             </template>
             {{ $t('more') }}
           </n-button>
-        </article>
+        </n-form>
         <article>
           <h3 class="mb-2">{{ $t('image') }}</h3>
           <ul class="flex gap-4">
@@ -109,43 +109,56 @@
 </template>
 
 <script setup lang="ts">
+import type { FormInst } from 'naive-ui';
 import { TermGroupID } from '~/constants';
 
 useHead({
   title: 'Add Product',
 });
-const { frm, insert } = useProduct();
 
-async function handleAdd() {
-  const {
-    categoryId,
-    typeId,
-    unitPrice = 0,
-    sku = '',
-    barcode = '',
-    description = '',
-    stockQuantity = 0,
-    stockTrackable = false,
-    name = '',
-    cost = 0,
-  } = frm.value;
-  const { errors, product } = await insert({
-    categoryId,
-    typeId,
-    unitPrice,
-    name,
-    sku,
-    barcode,
-    description,
-    stockQuantity,
-    stockTrackable,
-    cost,
+const notification = useNotification();
+const { t } = useI18n();
+const { frm, insert, rules } = useProduct();
+const formRef = ref<FormInst | null>(null);
+
+function handleAdd() {
+  formRef.value?.validate(async (errors) => {
+    if (!errors) {
+      const {
+        categoryId,
+        typeId,
+        unitPrice = 0,
+        sku = '',
+        barcode = '',
+        description = '',
+        stockQuantity = 0,
+        stockTrackable = false,
+        name = '',
+        cost = 0,
+      } = frm.value;
+      const { errors, product } = await insert({
+        categoryId,
+        typeId,
+        unitPrice,
+        name,
+        sku,
+        barcode,
+        description,
+        stockQuantity,
+        stockTrackable,
+        cost,
+      });
+
+      if (!errors) {
+        notification.success({
+          title: t('success'),
+          description: t('products.add_success'),
+        });
+        useRouter().push(`/products/${product.id}`);
+      }
+    } else {
+      console.log(errors);
+    }
   });
-
-  console.log({ errors, product });
-
-  if (!errors) {
-    useRouter().push(`/products/${product.id}`);
-  }
 }
 </script>
