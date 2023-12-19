@@ -5,22 +5,25 @@ import type { Product, ProductInput, Variable } from '~/types';
 
 export const useProduct = () => {
   const { client } = useApolloClient();
+  const { t } = useI18n();
+
+  const products = useState<Product[]>('products', () => []);
 
   const rules: FormRules = {
     name: {
       required: true,
-      message: 'Please input product name',
+      message: t('form.required'),
       trigger: 'blur',
     },
     price: {
       required: true,
-      message: 'Please input price',
+      message: t('form.required'),
       trigger: ['input'],
       type: 'number',
     },
     cost: {
       required: true,
-      message: 'Please input cost',
+      message: t('form.required'),
       trigger: ['input'],
       type: 'number',
     },
@@ -55,6 +58,22 @@ export const useProduct = () => {
       };
     } catch (error) {
       throw new Error(`[useProduct]: getProducts error: ${error}`);
+    }
+  }
+
+  async function fetchProducts(variables?: Partial<Variable>) {
+    try {
+      const { items, errors } = await getProducts(variables);
+      if (errors) {
+        throw new Error(`[useProduct]: fetchProducts errors: ${errors}`);
+      }
+      products.value = items;
+      return {
+        items,
+        errors,
+      };
+    } catch (error) {
+      throw new Error(`[useProduct]: fetchProducts error: ${error}`);
     }
   }
 
@@ -129,10 +148,12 @@ export const useProduct = () => {
   return {
     frm,
     count,
+    rules,
+    products,
     getProducts,
     insert,
     update,
     remove,
-    rules,
+    fetchProducts,
   };
 };

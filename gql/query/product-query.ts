@@ -16,6 +16,7 @@ export const PRODUCTS_QUERY = gql`
       sku
       barcode
       description
+      cost
       unitPrice: unit_price
       stockQuantity: stock_quantity
       stockTrackable: stock_trackable

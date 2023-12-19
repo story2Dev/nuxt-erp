@@ -74,12 +74,26 @@
           <n-form-item path="tag" :label="$t('tag')">
             <TermInput :group-id="TermGroupID.tag" type="checkbox" />
           </n-form-item>
-          <n-button text icon-placement="right">
+          <n-button text icon-placement="right" @click="more = !more">
             <template #icon>
               <Icon name="system-uicons:chevron-down" />
             </template>
             {{ $t('more') }}
           </n-button>
+          <div v-show="more">
+            <n-form-item path="sku" :label="$t('products.sku')">
+              <n-input
+                v-model:value="frm.sku"
+                :placeholder="$t('products.sku')"
+              />
+            </n-form-item>
+            <n-form-item path="barcode" :label="$t('products.barcode')">
+              <n-input
+                v-model:value="frm.barcode"
+                :placeholder="$t('products.barcode')"
+              />
+            </n-form-item>
+          </div>
         </n-form>
         <article>
           <h3 class="mb-2">{{ $t('image') }}</h3>
@@ -120,6 +134,7 @@ const notification = useNotification();
 const { t } = useI18n();
 const { frm, insert, rules } = useProduct();
 const formRef = ref<FormInst | null>(null);
+const more = ref(false);
 
 function handleAdd() {
   formRef.value?.validate(async (errors) => {
@@ -155,9 +170,13 @@ function handleAdd() {
           description: t('products.add_success'),
         });
         useRouter().push(`/products/${product.id}`);
+        return;
       }
-    } else {
-      console.log(errors);
+      notification.error({
+        title: t('fail'),
+        description: t('products.add_success'),
+      });
+      throw new Error(`Add product failed: ${errors}`);
     }
   });
 }
