@@ -41,6 +41,11 @@
     "price": "Price",
     "cost": "Cost",
     "stock": "Stock",
-    "add_success": "Add product success"
+    "add_success": "Add product success",
+    "sku": "SKU",
+    "barcode": "Barcode"
+  },
+  "form": {
+    "required": "Required"
   }
 }
