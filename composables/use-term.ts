@@ -110,7 +110,7 @@ export const useTerm = () => {
 
   const pageCount = computed(() => Math.ceil(count.value / limit));
 
-  async function handleSearch(groupId: number) {
+  async function handleSearch(groupId: number, orderBy: string = 'asc') {
     const { items } = await getTerms({
       where: {
         group_id: {
@@ -122,6 +122,9 @@ export const useTerm = () => {
       },
       limit,
       offset: (page.value - 1) * limit,
+      orderBy: {
+        name: orderBy,
+      },
     });
     terms.value = items;
   }
