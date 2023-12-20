@@ -30,7 +30,18 @@
       <table class="w-full">
         <thead class="border-b-2 text-left">
           <tr>
-            <th class="py-1">{{ $t('name') }}</th>
+            <th class="py-1">
+              <div class="cursor-pointer" @click="handleSort">
+                {{ $t('name') }}
+                <Icon
+                  :name="
+                    mode === 'desc'
+                      ? 'system-uicons:arrow-down'
+                      : 'system-uicons:arrow-up'
+                  "
+                />
+              </div>
+            </th>
             <th class="text-right">{{ $t('action') }}</th>
           </tr>
         </thead>
@@ -89,6 +100,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const mode = ref('asc');
 
 const {
   frm,
@@ -106,4 +118,9 @@ const {
 } = useTerm();
 
 handleSearch(props.groupId);
+
+function handleSort() {
+  mode.value = mode.value === 'desc' ? 'asc' : 'desc';
+  handleSearch(props.groupId, mode.value);
+}
 </script>
