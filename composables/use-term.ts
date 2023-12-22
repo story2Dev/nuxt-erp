@@ -1,6 +1,7 @@
 import { TERMS_QUERY } from '~/gql/query';
 import { DELETE_TERM, INSERT_TERM, UPDATE_TERM } from '~/gql/mutate';
 import type { Term, TermInput, Variable } from '~/types';
+import { SORT_MODE, type SortMode } from '~/constants';
 
 export const useTerm = () => {
   const { client } = useApolloClient();
@@ -110,7 +111,10 @@ export const useTerm = () => {
 
   const pageCount = computed(() => Math.ceil(count.value / limit));
 
-  async function handleSearch(groupId: number, orderBy: string = 'asc') {
+  async function handleSearch(
+    groupId: number,
+    orderBy: SortMode = SORT_MODE.ASC
+  ) {
     const { items } = await getTerms({
       where: {
         group_id: {
