@@ -31,16 +31,12 @@
         <thead class="border-b-2 text-left">
           <tr>
             <th class="py-1">
-              <div class="cursor-pointer" @click="handleSort">
-                {{ $t('name') }}
-                <Icon
-                  :name="
-                    mode === 'desc'
-                      ? 'system-uicons:arrow-down'
-                      : 'system-uicons:arrow-up'
-                  "
-                />
-              </div>
+              <SortKey
+                v-model="orderBy"
+                label="name"
+                field="name"
+                @update:model-value="handleSort"
+              />
             </th>
             <th class="text-right">{{ $t('action') }}</th>
           </tr>
@@ -100,8 +96,8 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const mode = ref('asc');
-
+const { orderBy } = useApp();
+orderBy.value.key = 'name';
 const {
   frm,
   isDelete,
@@ -120,7 +116,6 @@ const {
 handleSearch(props.groupId);
 
 function handleSort() {
-  mode.value = mode.value === 'desc' ? 'asc' : 'desc';
-  handleSearch(props.groupId, mode.value);
+  handleSearch(props.groupId, orderBy.value.mode);
 }
 </script>

@@ -11,3 +11,10 @@ export enum TermGroupID {
   projectStatus = 7,
   productType = 8,
 }
+
+export enum SORT_MODE {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
+export type SortMode = Lowercase<keyof typeof SORT_MODE> | string;
