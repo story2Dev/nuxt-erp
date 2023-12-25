@@ -1,7 +1,7 @@
 <template>
   <div class="h-full">
     <section
-      class="mx-auto flex h-full max-w-3xl gap-4 rounded-xl border border-slate-100 bg-white p-4"
+      class="mx-auto flex h-full max-w-3xl gap-4 rounded-xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
     >
       <article class="w-64">
         <div>
@@ -40,8 +40,8 @@
         <nav class="flex flex-col space-y-0.5">
           <nuxt-link
             v-for="(item, index) in filteredLinks"
-            :to="item.to"
             :key="index"
+            :to="item.to"
             class="flex items-center gap-2 rounded-md px-2 py-1"
             active-class="bg-primary-100 text-primary-500"
           >

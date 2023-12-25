@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[#fafafa]">
-    <n-config-provider :theme-overrides="lightThemeOverrides">
+  <div class="bg-[#fafafa] dark:bg-slate-800">
+    <naive-config :theme-config="themeConfig">
       <n-dialog-provider>
         <n-message-provider>
           <n-notification-provider>
@@ -12,10 +12,10 @@
           </n-notification-provider>
         </n-message-provider>
       </n-dialog-provider>
-    </n-config-provider>
+    </naive-config>
   </div>
 </template>
 
 <script setup lang="ts">
-import { lightThemeOverrides } from './theme.config';
+import { themeConfig } from './theme.config';
 </script>
