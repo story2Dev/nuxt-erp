@@ -7,6 +7,9 @@ const themeConfig: ThemeConfig = {
   shared: {
     common: {
       // borderColor: '#eee',
+      primaryColor: theme.colors.primary[500],
+      primaryColorHover: theme.colors.primary[400],
+      primaryColorPressed: theme.colors.primary[300],
       borderRadius: rounded,
       borderRadiusSmall: '4px',
     },

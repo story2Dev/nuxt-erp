@@ -2,13 +2,13 @@ export const PRODUCTS_QUERY = gql`
   query products(
     $limit: Int
     $offset: Int
-    $order_by: [products_order_by!]
+    $orderBy: [products_order_by!]
     $where: products_bool_exp
   ) {
     products(
       limit: $limit
       offset: $offset
-      order_by: $order_by
+      order_by: $orderBy
       where: $where
     ) {
       id
@@ -26,6 +26,10 @@ export const PRODUCTS_QUERY = gql`
       thumbnail
       createdAt: created_at
       updatedAt: updated_at
+      category: term {
+        id
+        name
+      }
     }
     aggregate: products_aggregate(where: $where) {
       aggregate {
