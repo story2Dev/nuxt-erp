@@ -35,24 +35,91 @@
 
       <n-card class="mt-4">
         <table class="w-full">
-          <thead>
+          <thead class="border-b">
             <tr>
-              <td>{{ $t('name') }}</td>
-              <td>{{ $t('products.price') }}</td>
-              <td>{{ $t('products.cost') }}</td>
+              <td class="w-12">{{ $t('image') }}</td>
+              <td class="py-1">
+                <SortKey
+                  v-model="orderBy"
+                  :label="$t('name')"
+                  field="name"
+                  @update:model-value="handleSearch"
+                />
+              </td>
+              <td class="py-1">
+                <SortKey
+                  v-model="orderBy"
+                  :label="$t('category')"
+                  field="category_id"
+                  @update:model-value="handleSearch"
+                />
+              </td>
+              <td>
+                <SortKey
+                  v-model="orderBy"
+                  :label="$t('products.price')"
+                  field="unit_price"
+                  @update:model-value="handleSearch"
+                />
+              </td>
+              <td>
+                <SortKey
+                  v-model="orderBy"
+                  :label="$t('products.cost')"
+                  field="cost"
+                  @update:model-value="handleSearch"
+                />
+              </td>
               <td></td>
             </tr>
           </thead>
           <tbody class="divide-y">
-            <tr v-for="(item, index) in products" :key="index">
-              <td>
-                <nuxt-link :to="`/products/${item.id}`">
+            <tr v-for="(item, index) in products" :key="index" class="group">
+              <td class="py-1">
+                <div class="h-10 w-10 rounded-md bg-slate-100">
+                  <nuxt-link :to="`/products/${item.id}`">
+                    <n-image
+                      :src="item.thumbnail"
+                      class="h-10 w-10 rounded-md object-cover"
+                    />
+                  </nuxt-link>
+                </div>
+              </td>
+              <td class="py-1">
+                <nuxt-link
+                  :to="`/products/${item.id}`"
+                  class="text-primary-500 hover:underline"
+                >
                   {{ item.name }}
                 </nuxt-link>
               </td>
+              <td>{{ item.category?.name }}</td>
               <td>{{ $n(item.unitPrice || 0) }}</td>
               <td>{{ $n(item.cost || 0) }}</td>
-              <td></td>
+              <td>
+                <div class="invisible flex justify-end group-hover:visible">
+                  <n-button
+                    circle
+                    quaternary
+                    type="primary"
+                    @click="setEdit(item)"
+                  >
+                    <template #icon>
+                      <Icon name="system-uicons:pen" />
+                    </template>
+                  </n-button>
+                  <n-button
+                    circle
+                    quaternary
+                    type="error"
+                    @click="setDelete(item)"
+                  >
+                    <template #icon>
+                      <Icon name="system-uicons:trash" />
+                    </template>
+                  </n-button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -87,7 +154,7 @@
 </template>
 
 <script setup lang="ts">
-const search = ref('');
+import type { Product } from '~/types';
 
 useHead({
   title: 'Products',
@@ -95,7 +162,7 @@ useHead({
 
 const { products, fetchProducts, count } = useProduct();
 
-const { page, limit } = useApp();
+const { page, limit, orderBy, search, getOrderBy } = useApp();
 const pageCount = computed(() => Math.ceil(count.value / limit));
 
 function handleSearch() {
@@ -106,8 +173,13 @@ function handleSearch() {
     where,
     limit,
     offset: (page.value - 1) * limit,
+    orderBy: getOrderBy(),
   });
 }
 
 handleSearch();
+
+function setEdit(item: Product) {}
+
+function setDelete(item: Product) {}
 </script>

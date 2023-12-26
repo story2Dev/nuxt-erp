@@ -42,19 +42,31 @@
           </tr>
         </thead>
         <tbody class="divide-y">
-          <tr v-for="(item, index) in terms" :key="index">
+          <tr v-for="(item, index) in terms" :key="index" class="group">
             <td class="py-1">{{ item.name }}</td>
             <td class="text-right">
-              <n-button circle quaternary type="primary" @click="setEdit(item)">
-                <template #icon>
-                  <Icon name="system-uicons:pen" />
-                </template>
-              </n-button>
-              <n-button circle quaternary type="error" @click="setDelete(item)">
-                <template #icon>
-                  <Icon name="system-uicons:trash" />
-                </template>
-              </n-button>
+              <div class="invisible flex justify-end group-hover:visible">
+                <n-button
+                  circle
+                  quaternary
+                  type="primary"
+                  @click="setEdit(item)"
+                >
+                  <template #icon>
+                    <Icon name="system-uicons:pen" />
+                  </template>
+                </n-button>
+                <n-button
+                  circle
+                  quaternary
+                  type="error"
+                  @click="setDelete(item)"
+                >
+                  <template #icon>
+                    <Icon name="system-uicons:trash" />
+                  </template>
+                </n-button>
+              </div>
             </td>
           </tr>
         </tbody>
