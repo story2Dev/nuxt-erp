@@ -10,6 +10,7 @@ export interface Product extends BaseModel {
   stockTrackable: boolean;
   typeId?: string;
   categoryId?: string;
+  unitId?: string;
   parentId?: string;
   thumbnail?: string;
   cost?: number;

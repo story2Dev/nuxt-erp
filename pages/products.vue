@@ -36,6 +36,10 @@ const links = [
     name: 'type',
   },
   {
+    to: '/products/unit',
+    name: 'unit',
+  },
+  {
     to: '/products/tag',
     name: 'tag',
   },
