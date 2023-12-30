@@ -20,7 +20,7 @@
         show-password-on="mousedown"
       >
         <template #prefix>
-          <Icon name="system-uicons:mail" />
+          <Icon name="system-uicons:lock" />
         </template>
       </n-input>
 

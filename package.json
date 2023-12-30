@@ -38,6 +38,6 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "echarts": "^5.3"
+    "echarts": "^5.2.0"
   }
 }

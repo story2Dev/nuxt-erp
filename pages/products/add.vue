@@ -30,7 +30,14 @@
             </n-form-item>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-3 gap-4">
+            <n-form-item path="category" :label="$t('unit')">
+              <TermInput
+                v-model:value="frm.unitId"
+                :placeholder="$t('unit')"
+                :group-id="TermGroupID.productUnit"
+              />
+            </n-form-item>
             <n-form-item path="category" :label="$t('category')">
               <TermInput
                 v-model:value="frm.categoryId"
@@ -150,6 +157,7 @@ function handleAdd() {
         stockTrackable = false,
         name = '',
         cost = 0,
+        unitId,
       } = frm.value;
       const { errors, product } = await insert({
         categoryId,
@@ -162,12 +170,14 @@ function handleAdd() {
         stockQuantity,
         stockTrackable,
         cost,
+        unitId,
       });
 
       if (!errors) {
         notification.success({
           title: t('success'),
           description: t('products.add_success'),
+          duration: 3000,
         });
         useRouter().push(`/products/${product.id}`);
         return;
@@ -175,6 +185,7 @@ function handleAdd() {
       notification.error({
         title: t('fail'),
         description: t('products.add_success'),
+        duration: 3000,
       });
       throw new Error(`Add product failed: ${errors}`);
     }

@@ -94,6 +94,7 @@ CREATE TABLE products (
   thumbnail character varying null,
   type_id uuid null references terms(id),
   category_id uuid null references terms(id),
+  unit_id uuid null references terms(id),
   parent_id uuid null references products(id),
   created_at timestamp without time zone not null default now_utc(),
   updated_at timestamp without time zone not null default now_utc()

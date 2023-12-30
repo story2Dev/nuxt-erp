@@ -10,6 +10,7 @@ export enum TermGroupID {
   paymentMethod = 6,
   projectStatus = 7,
   productType = 8,
+  productUnit = 9,
 }
 
 export enum SORT_MODE {
