@@ -1,6 +1,6 @@
 import type { FormRules } from 'naive-ui';
 import { DELETE_PRODUCT, INSERT_PRODUCT, UPDATE_PRODUCT } from '~/gql/mutate';
-import { PRODUCTS_QUERY } from '~/gql/query';
+import { PRODUCTS_QUERY, PRODUCT_QUERY } from '~/gql/query';
 import type { Product, ProductInput, Variable } from '~/types';
 
 export const useProduct = () => {
@@ -58,6 +58,27 @@ export const useProduct = () => {
       };
     } catch (error) {
       throw new Error(`[useProduct]: getProducts error: ${error}`);
+    }
+  }
+
+  async function fetchProduct(id: string) {
+    try {
+      const { data, errors } = await client.query({
+        query: PRODUCT_QUERY,
+        variables: {
+          id,
+        },
+      });
+      if (errors) {
+        throw new Error(`[useProduct]: fetchProduct errors: ${errors}`);
+      }
+
+      return {
+        product: data?.product as Product,
+        errors,
+      };
+    } catch (error) {
+      throw new Error(`[useProduct]: fetchProduct error: ${error}`);
     }
   }
 
@@ -155,5 +176,6 @@ export const useProduct = () => {
     update,
     remove,
     fetchProducts,
+    fetchProduct,
   };
 };

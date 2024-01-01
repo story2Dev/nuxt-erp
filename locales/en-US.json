@@ -34,6 +34,9 @@
   "confirm": "Confirm",
   "confirm_delete": "Are you sure to delete?",
   "confirm_delete_multiple": "Are you sure to delete all selected items?",
+  "detail": "Detail",
+  "no": "No",
+  "yes": "Yes",
   "auth": {
     "invalid_credentials": "Invalid credentials",
     "signin_failed": "Sign in failed",
