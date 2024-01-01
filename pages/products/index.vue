@@ -98,16 +98,13 @@
               <td>{{ $n(item.cost || 0) }}</td>
               <td>
                 <div class="invisible flex justify-end group-hover:visible">
-                  <n-button
-                    circle
-                    quaternary
-                    type="primary"
-                    @click="setEdit(item)"
-                  >
-                    <template #icon>
-                      <Icon name="system-uicons:pen" />
-                    </template>
-                  </n-button>
+                  <nuxt-link :to="`/products/${item.id}/edit`">
+                    <n-button circle quaternary type="primary">
+                      <template #icon>
+                        <Icon name="system-uicons:pen" />
+                      </template>
+                    </n-button>
+                  </nuxt-link>
                   <n-button
                     circle
                     quaternary

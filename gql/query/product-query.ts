@@ -38,3 +38,36 @@ export const PRODUCTS_QUERY = gql`
     }
   }
 `;
+
+export const PRODUCT_QUERY = gql`
+  query products($id: uuid!) {
+    product: products_by_pk(id: $id) {
+      id
+      name
+      sku
+      barcode
+      description
+      cost
+      unitPrice: unit_price
+      stockQuantity: stock_quantity
+      stockTrackable: stock_trackable
+      typeId: type_id
+      categoryId: category_id
+      unitId: unit_id
+      parentId: parent_id
+      thumbnail
+      createdAt: created_at
+      updatedAt: updated_at
+      category: term {
+        id
+        name
+      }
+      type: termByTypeId {
+        name
+      }
+      unit: termByUnitId {
+        name
+      }
+    }
+  }
+`;
