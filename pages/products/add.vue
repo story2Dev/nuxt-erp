@@ -78,15 +78,7 @@
               rows="2"
             />
           </n-form-item>
-          <n-form-item path="tag" :label="$t('tag')">
-            <TermInput :group-id="TermGroupID.tag" type="checkbox" />
-          </n-form-item>
-          <n-button text icon-placement="right" @click="more = !more">
-            <template #icon>
-              <Icon name="system-uicons:chevron-down" />
-            </template>
-            {{ $t('more') }}
-          </n-button>
+
           <div v-show="more">
             <n-form-item path="sku" :label="$t('products.sku')">
               <n-input
@@ -117,12 +109,22 @@
             </li>
             <input id="file" type="file" class="hidden" accept="image/*" />
           </ul>
+          <div class="mt-4">
+            {{ $t('tag') }}
+            <TermInput :group-id="TermGroupID.tag" type="checkbox" />
+          </div>
         </article>
       </div>
-      <div class="mt-6 flex gap-2">
+      <div class="flex gap-2">
         <n-button @click="$router.back()">{{ $t('cancel') }}</n-button>
         <n-button type="primary" @click.prevent="handleAdd">
           {{ $t('add') }}
+        </n-button>
+        <n-button text icon-placement="right" @click="more = !more">
+          <template #icon>
+            <Icon name="system-uicons:chevron-down" />
+          </template>
+          {{ $t('more') }}
         </n-button>
       </div>
     </n-card>
@@ -184,7 +186,7 @@ function handleAdd() {
       }
       notification.error({
         title: t('fail'),
-        description: t('products.add_success'),
+        description: t('products.add_fail'),
         duration: 3000,
       });
       throw new Error(`Add product failed: ${errors}`);

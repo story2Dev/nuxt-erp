@@ -53,7 +53,8 @@
     "stock": "Stock",
     "add_success": "Add product success",
     "sku": "SKU",
-    "barcode": "Barcode"
+    "barcode": "Barcode",
+    "update_success": "Update product success"
   },
   "form": {
     "required": "Required"
