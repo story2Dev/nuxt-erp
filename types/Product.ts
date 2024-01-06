@@ -1,4 +1,4 @@
-import type { BaseModel, Term } from './Term';
+import type { BaseModel, Term, TermObject } from './Term';
 
 export interface Product extends BaseModel {
   name: string;
@@ -17,6 +17,7 @@ export interface Product extends BaseModel {
   category?: Term;
   type?: Term;
   unit?: Term;
+  tags?: TermObject[];
 }
 
 export interface ProductMeta extends BaseModel {

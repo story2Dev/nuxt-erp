@@ -156,6 +156,6 @@ create table if not exists term_objects (
   id uuid primary key default gen_random_uuid(),
   object_id uuid not null,
   term_id uuid not null references terms(id),
- created_at timestamp without time zone not null default now_utc(),
+  created_at timestamp without time zone not null default now_utc(),
   updated_at timestamp without time zone not null default now_utc()
 );

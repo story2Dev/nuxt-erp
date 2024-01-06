@@ -30,3 +30,12 @@ export type TermInput = Omit<
 > & {
   termMeta?: TermMeta[];
 };
+
+export type TermObject = {
+  id: string;
+  termId: string;
+  objectId: string;
+  term?: Term;
+};
+
+export type TermObjectInput = Pick<TermObject, 'objectId' | 'termId'>;

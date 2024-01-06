@@ -111,7 +111,11 @@
           </ul>
           <div class="mt-4">
             {{ $t('tag') }}
-            <TermInput :group-id="TermGroupID.tag" type="checkbox" />
+            <TermInput
+              v-model:value="tags"
+              :group-id="TermGroupID.tag"
+              type="checkbox"
+            />
           </div>
         </article>
       </div>
@@ -142,8 +146,10 @@ useHead({
 const notification = useNotification();
 const { t } = useI18n();
 const { frm, insert, rules } = useProduct();
+const { insert: insertTag } = useTermObjects();
 const formRef = ref<FormInst | null>(null);
 const more = ref(false);
+const tags = ref<string[]>([]);
 
 function handleAdd() {
   formRef.value?.validate(async (errors) => {
@@ -181,6 +187,16 @@ function handleAdd() {
           description: t('products.add_success'),
           duration: 3000,
         });
+
+        // insert product tag
+        if (tags.value.length) {
+          const tabInputs = tags.value.map((e) => ({
+            objectId: product.id,
+            termId: e,
+          }));
+          await insertTag(tabInputs);
+        }
+
         useRouter().push(`/products/${product.id}`);
         return;
       }
