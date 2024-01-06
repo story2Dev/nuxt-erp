@@ -58,10 +58,24 @@
         {{ frm.sku || '-' }}
       </n-descriptions-item>
     </n-descriptions>
+
+    <n-space>
+      <n-tag
+        v-for="(item, index) in frm?.tags"
+        :key="index"
+        closable
+        @close="handleRemoveTag(item)"
+      >
+        {{ item.term?.name }}
+      </n-tag>
+      <n-dynamic-tags />
+    </n-space>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { TermObject } from '~/types';
+
 const { frm, fetchProduct } = useProduct();
 
 const { id } = useRoute().params;
@@ -75,5 +89,9 @@ if (!errors) {
   useHead({
     title: `${product.name}`,
   });
+}
+
+function handleRemoveTag(item: TermObject) {
+  console.log(item);
 }
 </script>

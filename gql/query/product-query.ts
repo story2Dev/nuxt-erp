@@ -68,6 +68,12 @@ export const PRODUCT_QUERY = gql`
       unit: termByUnitId {
         name
       }
+      tags {
+        id
+        term {
+          name
+        }
+      }
     }
   }
 `;

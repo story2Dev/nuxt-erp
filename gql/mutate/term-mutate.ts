@@ -37,3 +37,25 @@ export const DELETE_TERM = gql`
     }
   }
 `;
+
+export const INSERT_TERM_OBJECTS = gql`
+  mutation insertTerm($objects: [term_objects_insert_input!]!) {
+    insertTermObjects: insert_term_objects(objects: $objects) {
+      returning {
+        id
+        objectId: object_id
+        termId: term_id
+      }
+    }
+  }
+`;
+
+export const INSERT_TERM_OBJECT = gql`
+  mutation insertTerm($object: term_objects_insert_input!) {
+    insertTermObjects: insert_term_objects_one(object: $object) {
+      id
+      objectId: object_id
+      termId: term_id
+    }
+  }
+`;
