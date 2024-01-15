@@ -18,6 +18,11 @@ export const quizAccessApp = [
     icon: 'system-uicons:box',
   },
   {
+    to: '/orders',
+    title: 'Orders',
+    icon: 'solar:reorder-bold',
+  },
+  {
     to: '/documents',
     icon: 'system-uicons:document',
     title: 'file',

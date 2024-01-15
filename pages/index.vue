@@ -1,14 +1,14 @@
 <template>
   <div>
-    <section>Dashboard</section>
+    <section class="px-4">Dashboard</section>
     <section class="mt-4 grid gap-4 md:grid-cols-2">
       <div>
-        <CommonQuizAccessApp />
+        <CommonQuizAccessApp class="px-4" />
         <article class="mt-4">
           <QuoteRecent />
         </article>
       </div>
-      <div>
+      <div class="px-4">
         <article class="grid grid-cols-2 gap-4">
           <n-card class="h-full">
             <div class="flex h-full w-full flex-col">
