@@ -45,6 +45,9 @@ export const INSERT_TERM_OBJECTS = gql`
         id
         objectId: object_id
         termId: term_id
+        term {
+          name
+        }
       }
     }
   }
@@ -53,6 +56,19 @@ export const INSERT_TERM_OBJECTS = gql`
 export const INSERT_TERM_OBJECT = gql`
   mutation insertTerm($object: term_objects_insert_input!) {
     insertTermObjects: insert_term_objects_one(object: $object) {
+      id
+      objectId: object_id
+      termId: term_id
+      term {
+        name
+      }
+    }
+  }
+`;
+
+export const DELETE_TERM_OBJECT = gql`
+  mutation deleteTermObject($id: uuid!) {
+    deleteTermObject: delete_term_objects_by_pk(id: $id) {
       id
       objectId: object_id
       termId: term_id
