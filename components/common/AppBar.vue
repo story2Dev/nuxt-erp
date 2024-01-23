@@ -1,10 +1,12 @@
 <template>
   <div>
-    <nav class="flex h-full items-center justify-between">
+    <nav
+      class="flex h-full items-center justify-between border-b border-slate-100 border-s-teal-100 bg-white dark:border-slate-900 dark:bg-primary-500"
+    >
       <ul class="flex h-full">
         <li>
           <div
-            class="flex h-full w-14 items-center justify-center bg-gray-100 transition-all hover:bg-primary-400 hover:text-white dark:bg-slate-700"
+            class="flex h-full w-14 items-center justify-center bg-slate-100 transition-all hover:bg-primary-400 hover:text-white dark:bg-primary-500"
           >
             <Icon name="iconamoon:apps" size="18" />
           </div>
@@ -42,7 +44,7 @@
           </template>
         </n-input>
         <button
-          class="flex h-full w-12 items-center justify-center p-2 text-center transition-all hover:bg-gray-50 dark:hover:bg-gray-800 md:hidden"
+          class="flex h-full w-12 items-center justify-center p-2 text-center transition-all hover:bg-gray-50 md:hidden dark:hover:bg-gray-800"
         >
           <Icon name="fluent:search-20-regular" />
         </button>
