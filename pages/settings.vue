@@ -17,7 +17,7 @@
             v-show="!search.length"
             to="/settings/accounts"
             class="block p-2"
-            active-class="bg-primary-100 rounded-xl"
+            active-class="bg-primary-100 rounded-xl dark:bg-primary-500"
           >
             <n-thing title="Mark AI">
               <template #avatar>
@@ -29,7 +29,7 @@
 
           <article
             v-if="!filteredLinks.length"
-            class="flex flex-col items-center justify-end rounded-lg bg-slate-50 p-4 text-slate-500"
+            class="flex flex-col items-center justify-end rounded-lg bg-slate-50 p-4 text-slate-500 dark:bg-slate-800"
           >
             <Icon name="system-uicons:search" size="30" />
             <span>{{ $t('no_result') }}</span>
@@ -43,7 +43,7 @@
             :key="index"
             :to="item.to"
             class="flex items-center gap-2 rounded-md px-2 py-1"
-            active-class="bg-primary-100 text-primary-500"
+            active-class="bg-primary-100 text-primary-500 dark:bg-primary-500 dark:text-white"
           >
             <Icon :name="item.icon" size="18" />
             <span>{{ item.title }}</span>
