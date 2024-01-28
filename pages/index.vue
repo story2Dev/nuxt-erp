@@ -1,7 +1,7 @@
 <template>
   <div>
-    <section class="px-4">Dashboard</section>
-    <section class="mt-4 grid gap-4 md:grid-cols-2">
+    <section class="p-4">Dashboard</section>
+    <section class="grid gap-4 md:grid-cols-2">
       <div>
         <CommonQuizAccessApp class="px-4" />
         <article class="mt-4">
@@ -46,6 +46,14 @@
         </article>
       </div>
     </section>
+
+    <n-button
+      circle
+      type="primary"
+      class="bottom-4 right-4 hidden h-14 w-14 shadow-xl md:fixed md:flex"
+    >
+      <Icon name="system-uicons:plus" size="30" />
+    </n-button>
   </div>
 </template>
 
