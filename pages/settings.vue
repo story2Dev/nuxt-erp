@@ -1,9 +1,9 @@
 <template>
-  <div class="h-full">
+  <div class="h-full pt-4">
     <section
-      class="mx-auto flex h-full max-w-3xl gap-4 rounded-xl border border-slate-100 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+      class="mx-auto flex h-full max-w-3xl divide-x divide-slate-100 rounded-xl border border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-900"
     >
-      <article class="w-64">
+      <article class="w-64 p-4">
         <div>
           <n-input v-model:value="search" :placeholder="$t('search')">
             <template #prefix>
@@ -51,7 +51,7 @@
         </nav>
       </article>
 
-      <article class="flex-grow">
+      <article class="flex-grow p-4">
         <div class="mb-4 flex items-center gap-2">
           <button @click="$router.back()">
             <Icon name="system-uicons:chevron-left" size="20" />

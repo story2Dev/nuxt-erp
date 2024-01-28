@@ -54,7 +54,9 @@
         <li
           class="flex h-full w-12 items-center justify-center p-2 transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-800"
         >
-          <Icon name="fluent:settings-20-regular" />
+          <n-badge :value="20" :max="15">
+            <Icon name="heroicons:bell" size="24" class="text-gray-500" />
+          </n-badge>
         </li>
         <li
           class="flex h-full w-12 items-center justify-center p-2 transition-colors duration-500 hover:bg-gray-200 dark:hover:bg-gray-800"
