@@ -1,8 +1,13 @@
 export const AppMenu = [
   {
-    title: 'Dashboard',
+    title: 'dashboard',
     icon: 'ep:house',
     path: '/',
+  },
+  {
+    title: 'client',
+    icon: 'solar:users-group-rounded-line-duotone',
+    path: '/clients',
   },
   {
     title: 'Setting',
