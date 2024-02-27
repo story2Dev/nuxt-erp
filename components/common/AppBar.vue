@@ -31,7 +31,7 @@
           }"
         >
           <nuxt-link to="/" class="text-base font-bold text-primary-500">
-            <span class="hidden md:block">Nuxt Admin</span>
+            <span class="hidden md:block">{{ title }}</span>
             <span class="md:hidden">NA</span>
           </nuxt-link>
         </li>
@@ -81,4 +81,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { title } = useApp();
+</script>
