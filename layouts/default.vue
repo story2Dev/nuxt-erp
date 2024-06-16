@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-screen flex-col">
-    <CommonAppBar />
+    <AppBar />
 
     <section class="flex flex-grow overflow-y-auto">
       <div class="hidden md:block">
@@ -8,7 +8,7 @@
           class="group relative flex h-full w-14 flex-col items-center bg-gray-100 dark:bg-slate-700"
         >
           <div class="flex w-full items-center pt-4">
-            <CommonSideBar />
+            <AppSideBar />
           </div>
         </aside>
       </div>
@@ -19,7 +19,7 @@
       </main>
     </section>
 
-    <CommonFooter />
+    <AppFooter />
   </div>
 </template>
 
