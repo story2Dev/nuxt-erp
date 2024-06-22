@@ -25,7 +25,7 @@ export const quizAccessApp = [
   {
     to: '/orders',
     title: 'Orders',
-    icon: 'solar:reorder-bold',
+    icon: 'heroicons:document-duplicate',
   },
   {
     to: '/documents',

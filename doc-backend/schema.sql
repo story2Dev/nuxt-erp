@@ -114,11 +114,20 @@ CREATE TABLE projects (
   id uuid primary key default gen_random_uuid(),
   name character varying NOT NULL,
   description TEXT,
-  email VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NULL,
   user_id uuid null references auth.users(id), -- owner
   status_id uuid null references terms(id),
+  created_at timestamp without time zone not null default now_utc(),
+  updated_at timestamp without time zone not null default now_utc()
+);
+
+
+CREATE TABLE project_meta (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid not null references projects(id),
+  key character varying not null,
+  value character varying not null,
   created_at timestamp without time zone not null default now_utc(),
   updated_at timestamp without time zone not null default now_utc()
 );

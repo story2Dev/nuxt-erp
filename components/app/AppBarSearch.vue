@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <n-input class="hidden w-full md:block" placeholder="Search">
+    <n-input class="w-full" placeholder="Search">
       <template #prefix>
         <Icon name="fluent:search-20-regular" />
       </template>
