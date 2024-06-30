@@ -1,5 +1,6 @@
 export const TOKEN_KEY = 'ne-token';
 export const SESSION_KEY = 'ne-session';
+export const USER_KEY = 'ne-user';
 
 export enum TermGroupID {
   category = 1,

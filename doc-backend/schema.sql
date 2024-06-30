@@ -110,8 +110,31 @@ CREATE TABLE product_data (
 );
 
 
+CREATE TABLE projects (
+  id uuid primary key default gen_random_uuid(),
+  name character varying NOT NULL,
+  description TEXT,
+  email character varying NULL,
+  start_date DATE NULL,
+  end_date DATE NULL,
+  user_id uuid null references auth.users(id), -- owner
+  status_id uuid null references terms(id),
+  created_at timestamp without time zone not null default now_utc(),
+  updated_at timestamp without time zone not null default now_utc()
+);
+
+
+CREATE TABLE project_meta (
+  id uuid primary key default gen_random_uuid(),
+  project_id uuid not null references projects(id),
+  key character varying not null,
+  value character varying not null,
+  created_at timestamp without time zone not null default now_utc(),
+  updated_at timestamp without time zone not null default now_utc()
+);
+
 -- Order Processing Module
-CREATE TABLE customers (
+CREATE TABLE clients (
   id uuid primary key default gen_random_uuid(),
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
@@ -122,17 +145,35 @@ CREATE TABLE customers (
   updated_at timestamp without time zone not null default now_utc()
 );
 
+CREATE TABLE contracts (
+  id uuid primary key default gen_random_uuid(),
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  start_date DATE NOT NULL,
+  end_date DATE NULL,
+  currency_id uuid null references terms(id),
+  user_id uuid null references auth.users(id), -- owner
+  status_id uuid null references terms(id),
+  client_id uuid null references clients(id),
+  project_id uuid null references projects(id),
+  created_at timestamp without time zone not null default now_utc(),
+  updated_at timestamp without time zone not null default now_utc()
+);
+
 
 CREATE TABLE orders (
   id uuid primary key default gen_random_uuid(),
-  customer_id uuid REFERENCES customers(id),
+  client_id uuid REFERENCES clients(id),
   order_date DATE NOT NULL,
   total_amount DECIMAL(15, 2) NOT NULL,
   total_cost DECIMAL(15, 2) NOT NULL,
   total_tax DECIMAL(15, 2) NOT NULL,
   total_discount DECIMAL(15, 2) NOT NULL,
   total_profit DECIMAL(15, 2) NOT NULL,
+  app_type character varying null, -- quotation,invoice, sales, purchase, 
   status_id uuid null references terms(id),
+  project_id uuid null references projects(id),
+  contract_id uuid null references contracts(id),
   created_at timestamp without time zone not null default now_utc(),
   updated_at timestamp without time zone not null default now_utc()
 );

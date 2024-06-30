@@ -1,7 +1,7 @@
 <template>
   <div class="h-full pt-4">
     <section
-      class="mx-auto flex h-full max-w-3xl divide-x divide-slate-100 rounded-xl border border-slate-100 bg-white dark:border-slate-800 dark:bg-slate-900"
+      class="mx-auto flex h-full max-w-3xl divide-x divide-slate-100 rounded-xl border border-slate-100 bg-white dark:divide-slate-700 dark:border-slate-800 dark:bg-slate-900"
     >
       <article class="w-64 p-4">
         <div>

@@ -4,7 +4,7 @@
       <li v-for="(item, index) in quizAccessApp" :key="index">
         <nuxt-link
           :to="item.to"
-          class="group flex cursor-pointer flex-col items-center rounded-xl bg-white p-4 px-6 hover:bg-primary-50"
+          class="group flex cursor-pointer flex-col items-center rounded-xl bg-white p-4 px-6 hover:bg-primary-50 dark:bg-slate-900 dark:hover:bg-slate-950"
         >
           <Icon
             :name="item.icon"

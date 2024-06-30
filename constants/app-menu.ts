@@ -1,8 +1,18 @@
 export const AppMenu = [
   {
-    title: 'Dashboard',
+    title: 'dashboard',
     icon: 'ep:house',
     path: '/',
+  },
+  {
+    title: 'project',
+    icon: 'solar:document-add-line-duotone',
+    path: '/projects',
+  },
+  {
+    title: 'client',
+    icon: 'solar:users-group-rounded-line-duotone',
+    path: '/clients',
   },
   {
     title: 'Setting',
@@ -20,7 +30,7 @@ export const quizAccessApp = [
   {
     to: '/orders',
     title: 'Orders',
-    icon: 'solar:reorder-bold',
+    icon: 'heroicons:document-duplicate',
   },
   {
     to: '/documents',

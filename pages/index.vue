@@ -3,7 +3,7 @@
     <section class="p-4">Dashboard</section>
     <section class="grid gap-4 md:grid-cols-2">
       <div>
-        <CommonQuizAccessApp class="px-4" />
+        <AppQuizAccess class="px-4" />
         <article class="mt-4">
           <QuoteRecent />
         </article>
@@ -62,7 +62,7 @@ import theme from '#tailwind-config/theme';
 import { type ECOption, useEcharts } from '~/hooks/echart';
 
 definePageMeta({
-  middleware: 'auth',
+  // middleware: 'auth',
 });
 
 const themeColor = theme.colors.primary[500];

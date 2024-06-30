@@ -1,0 +1,36 @@
+
+
+@baseUrl = http://localhost:4000
+@userEmail = test@email.com
+@userPassword = 123456
+
+
+###
+
+POST {{baseUrl}}/signin/email-password
+Content-Type: application/json
+
+{
+  "email": "{{userEmail}}",
+  "password": "{{userPassword}}"
+}
+###
+
+# sign up
+POST {{baseUrl}}/signup/email-password
+Content-Type: application/json
+
+{
+  "email": "{{userEmail}}",
+  "password": "{{userPassword}}"
+}
+###
+
+# sign up with email random
+POST {{baseUrl}}/signup/email-password
+Content-Type: application/json
+
+{
+  "email": "{{$randomInt 1000 9000}}@email.com",
+  "password": "123456"
+}
