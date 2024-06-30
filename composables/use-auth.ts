@@ -1,10 +1,11 @@
-import { SESSION_KEY, TOKEN_KEY } from '~/constants';
+import { SESSION_KEY, TOKEN_KEY, USER_KEY } from '~/constants';
 
 export const useAuth = () => {
   const config = useRuntimeConfig();
 
   const cookieSession = useCookie<any>(SESSION_KEY);
   const token = useCookie(TOKEN_KEY);
+  const userCookie = useCookie(USER_KEY);
 
   function setAuthSession(session: any) {
     cookieSession.value = {
@@ -12,6 +13,7 @@ export const useAuth = () => {
       accessTokenExpiresIn: Date.now() + session.accessTokenExpiresIn * 1000,
     };
     token.value = session.accessToken;
+    userCookie.value = JSON.stringify(session.user);
   }
 
   async function signIn(email: string, password: string) {

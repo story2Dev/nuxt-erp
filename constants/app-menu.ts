@@ -5,6 +5,11 @@ export const AppMenu = [
     path: '/',
   },
   {
+    title: 'project',
+    icon: 'solar:document-add-line-duotone',
+    path: '/projects',
+  },
+  {
     title: 'client',
     icon: 'solar:users-group-rounded-line-duotone',
     path: '/clients',

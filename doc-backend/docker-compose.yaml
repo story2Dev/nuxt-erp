@@ -24,7 +24,7 @@ services:
     ports:
       - '5432:5432'
   graphql-engine:
-    image: hasura/graphql-engine:latest
+    image: hasura/graphql-engine:v2.40.2
     depends_on:
       - 'postgres'
     restart: always
@@ -46,7 +46,7 @@ services:
       - "traefik.http.routers.hasura.rule=Host(`localhost`) && PathPrefix(`/`)"
       - "traefik.http.routers.hasura.entrypoints=web"
   auth:
-    image: nhost/hasura-auth
+    image: nhost/hasura-auth:0.32.1
     depends_on:
       - postgres
       - graphql-engine

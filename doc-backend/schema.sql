@@ -114,7 +114,8 @@ CREATE TABLE projects (
   id uuid primary key default gen_random_uuid(),
   name character varying NOT NULL,
   description TEXT,
-  start_date DATE NOT NULL,
+  email character varying NULL,
+  start_date DATE NULL,
   end_date DATE NULL,
   user_id uuid null references auth.users(id), -- owner
   status_id uuid null references terms(id),
