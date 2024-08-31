@@ -42,19 +42,43 @@
       </div>
 
       <ul class="flex h-full items-center justify-end">
+        <li>
+          <n-popover trigger="click">
+            <template #trigger>
+              <n-button circle quaternary type="primary">
+                <Icon name="system-uicons:plus" size="30" />
+              </n-button>
+            </template>
+
+            <template #header>
+              <div class="text-base font-bold"> {{ $t('create') }} </div>
+            </template>
+
+            <ul class="grid grid-cols-2">
+              <li
+                v-for="(item, index) in menuListCreate"
+                :key="index"
+                class="rounded-xl px-4 py-2 hover:bg-slate-50"
+              >
+                <nuxt-link-locale :to="item.to" class="flex items-center gap-2">
+                  <Icon :name="item.icon" size="24" />
+                  <span>{{ item.name }}</span>
+                </nuxt-link-locale>
+              </li>
+            </ul>
+          </n-popover>
+        </li>
         <li
-          class="flex h-full w-12 items-center justify-center rounded-xl p-2 transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="flex h-full w-12 items-center justify-center rounded-xl p-2 transition-all duration-200"
         >
           <AppNotification />
         </li>
         <li
-          class="flex h-full w-12 items-center justify-center rounded-xl p-2 transition-colors duration-500 hover:bg-gray-200 dark:hover:bg-gray-800"
+          class="flex h-full w-12 items-center justify-center rounded-xl p-2 transition-colors duration-500"
         >
           <Icon name="system-uicons:question-circle" />
         </li>
-        <li
-          class="rounded-xl p-2 transition-colors duration-500 hover:bg-gray-200 dark:hover:bg-gray-800"
-        >
+        <li class="rounded-xl p-2 transition-colors duration-500">
           <AppBarProfile />
         </li>
       </ul>
@@ -64,4 +88,22 @@
 
 <script setup lang="ts">
 const { title } = useApp();
+
+const menuListCreate = [
+  {
+    name: 'Product',
+    icon: 'system-uicons:box',
+    to: '/products/add',
+  },
+  {
+    name: 'Order',
+    icon: 'system-uicons:cart',
+    to: '/orders/add',
+  },
+  {
+    name: 'Project',
+    icon: 'solar:document-add-line-duotone',
+    to: '/projects/create',
+  },
+];
 </script>

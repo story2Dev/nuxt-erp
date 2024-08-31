@@ -46,14 +46,6 @@
         </article>
       </div>
     </section>
-
-    <n-button
-      circle
-      type="primary"
-      class="bottom-4 right-4 hidden h-14 w-14 shadow-xl md:fixed md:flex"
-    >
-      <Icon name="system-uicons:plus" size="30" />
-    </n-button>
   </div>
 </template>
 
